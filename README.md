@@ -1,9 +1,28 @@
-# TON-assembler
-TON-assembler implementation
+# Light-assembler
+
+The Everscale Assembler distributed in a form of shared library. It is used in Light compiler, to natively compile TVM mnemonics into the bytecode.
 
 ## Prerequisites
 
-https://www.rust-lang.org/en-US/install.html
+* Rust
+  https://www.rust-lang.org/en-US/install.html
+
+## Build 
+
+``git clone https://github.com/unboxedtype/light-assembler``
+``cd light-assembler``
+``make build``
+
+This will compile the libever_assembler.so shared library.
+
+``make install``
+
+This will copy the libever_assembler.so lib into /usr/lib64, so the Compiler
+can interact with it.
+
+``make uninstall``
+
+This will remove the .so file from /usr/lib64, when you no longer need it.
 
 ---
 Copyright (C) 2019-2021 TON Labs. All Rights Reserved.
