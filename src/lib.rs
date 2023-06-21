@@ -13,6 +13,8 @@
 
 use std::{collections::HashMap, ops::RangeInclusive};
 use ton_types::{Cell, SliceData, BuilderData};
+use std::ffi::CString;
+use std::os::raw::c_char;
 
 pub use debug::{Line, Lines, DbgInfo, lines_to_string};
 
@@ -436,6 +438,29 @@ pub fn compile_code_to_cell(code: &str) -> Result<Cell, CompileError> {
     }
 }
 
+#[no_mangle]
+pub extern "C" fn compile_code_to_b64(ptr: *mut c_char) -> *mut c_char {
+    unsafe {
+        if !ptr.is_null() {
+            let cstr = CString::from_raw(ptr) ;
+            let str = cstr.to_str().unwrap();
+            let code = compile_code_to_builder(&str).unwrap();
+            let result =
+                CString::new(
+                    match code.into_cell() {
+                        Ok(code) =>
+                        { base64::encode(ton_types::boc::write_boc(&code).unwrap()) }
+                        Err(_) =>
+                            "error".into()
+                    }
+                );
+            result.unwrap().into_raw()
+        } else {
+            panic!("null pointer passed");
+        }
+    }
+}
+
 pub fn compile_code_debuggable(code: Lines) -> Result<(SliceData, DbgInfo), CompileError> {
     log::trace!(target: "tvm", "begin compile\n");
     let source = lines_to_string(&code);
@@ -449,4 +474,3 @@ pub fn compile_code_debuggable(code: Lines) -> Result<(SliceData, DbgInfo), Comp
         Err(_) => Err(CompileError::unknown(0, 0, "failure while convert BuilderData to cell"))
     }
 }
-
