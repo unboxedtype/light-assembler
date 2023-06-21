@@ -10,7 +10,9 @@ The Everscale Assembler distributed in a form of shared library. It is used in L
 ## Build 
 
 ``git clone https://github.com/unboxedtype/light-assembler``
+
 ``cd light-assembler``
+
 ``make build``
 
 This will compile the libever_assembler.so shared library.
