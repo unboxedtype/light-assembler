@@ -13,23 +13,17 @@ The Everscale Assembler distributed in a form of shared library. It is used in L
 git clone https://github.com/unboxedtype/light-assembler
 cd light-assembler
 make build
-```
-
-This will compile the `libever_assembler.so` shared library.
-
-```console
 make install
 ```
 
-This will copy the `libever_assembler.so` lib into `/usr/lib64`, so the Compiler
-can interact with it.
+This will compile the `libever_assembler.so` shared library and copy it into
+the `/usr/lib64` directory.
+
+If you ever need to remove it, execute:
 
 ```console
 make uninstall
 ```
-
-This will remove the `libever_assembler.so` file from `/usr/lib64`, when you no longer need it.
-
 ---
 Copyright (C) 2019-2021 TON Labs. All Rights Reserved.
 
