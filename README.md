@@ -1,6 +1,9 @@
 # Light-assembler
 
-The Everscale Assembler distributed in a form of shared library. It is used in Light compiler, to natively compile TVM mnemonics into the bytecode.
+Light-assembler is Everscale Assembler distributed in a form of shared
+library.  It is  used in [Light](https://github.com/unboxedtype/light)
+compiler, for the purpose of natively compiling TVM mnemonics into the
+bytecode.
 
 ## Prerequisites
 
