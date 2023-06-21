@@ -12,11 +12,11 @@ bytecode.
 
 ## Build 
 
-```console
-git clone https://github.com/unboxedtype/light-assembler
-cd light-assembler
-make build
-make install
+```shell
+$ git clone https://github.com/unboxedtype/light-assembler
+$ cd light-assembler
+$ make build
+$ make install
 ```
 
 This will compile the `libever_assembler.so` shared library and copy it into
@@ -24,8 +24,8 @@ the `/usr/lib64` directory.
 
 If you ever need to remove it, execute:
 
-```console
-make uninstall
+```shell
+$ make uninstall
 ```
 ---
 Copyright (C) 2019-2021 TON Labs. All Rights Reserved.
